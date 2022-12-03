@@ -1,4 +1,4 @@
-package day;
+package day.day1;
 
 import common.FileReader;
 import java.util.ArrayList;

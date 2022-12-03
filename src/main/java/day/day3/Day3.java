@@ -1,4 +1,4 @@
-package day;
+package day.day3;
 
 import common.FileReader;
 
