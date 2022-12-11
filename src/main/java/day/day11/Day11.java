@@ -10,15 +10,25 @@ import java.util.function.Predicate;
 /*
     I gave up on part 2.
     Either there is probably a pattern I am not seeing or my method of approach was completely wrong from the start.
+
+    ** PART 2 UPDATE **
+    All dividers are prime numbers so multiplying them together to take the remainder of the final value will always preserve the correct number.
+    I did this lazily by hand and stuffed it in a variable I called 'smd'.
+
+    Full disclosure: I had to read up on other peoples solution to understand what the part 2 wanted from the solution.
+
 */
 
 public class Day11 {
 
-    private static final boolean IS_PART_2 = false;
+    private static final boolean IS_PART_2 = true;
 
     private static final int MAX_ROUND = IS_PART_2 ? 10000 : 20;
 
-    private static final Function<BigInteger, BigInteger> globalWorryLevelChange = IS_PART_2 ? (value -> value) : (value -> value.divide(BigInteger.valueOf(3)));
+    private static final BigInteger smd = IS_PART_2 ? BigInteger.valueOf(19 * 3 * 13 * 7 * 5 * 11 * 17 * 2) : BigInteger.valueOf(23 * 19 * 13 * 17);
+
+    private static final Function<BigInteger, BigInteger> globalWorryLevelChange = IS_PART_2 ? (value -> value.mod(smd)) : (value -> value.divide(BigInteger.valueOf(3)));
+
 
     private static List<Monkey> monkeys = new ArrayList<>() {{
         //Test Data:
